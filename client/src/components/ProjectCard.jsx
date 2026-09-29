@@ -82,7 +82,19 @@ const ProjectCard = forwardRef(function ProjectCard({ project, index = 0, varian
         >
           <span className="card__art" style={{ backgroundImage: poster ? `url(${poster})` : posterGradient(gradient) }} />
           {poster && <img className="card__poster" src={poster} alt="" loading="lazy" decoding="async" />}
-          <video ref={vid} className="card__video" muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} />
+          <video
+            ref={vid}
+            className="card__video"
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-hidden="true"
+            tabIndex={-1}
+            onError={(e) => {
+              e.currentTarget.style.visibility = 'hidden';
+            }}
+          />
           <motion.span className="card__glow" style={{ left: glowX, top: glowY }} />
           <span className="card__shade" />
           <span className="card__chip">{category}</span>

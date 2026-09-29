@@ -61,6 +61,9 @@ if (fs.existsSync(clientDist)) {
       },
     })
   );
+  // A missing video must answer 404 (video/mp4), never the SPA shell — otherwise the
+  // <video> element gets HTML and fails with a confusing decode error.
+  app.use('/videos', (req, res) => res.status(404).type('text').send('Video not found'));
   app.get('*', (req, res) => res.sendFile(path.join(clientDist, 'index.html')));
 } else {
   app.get('/', (req, res) =>

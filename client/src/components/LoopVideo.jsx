@@ -24,5 +24,21 @@ export default function LoopVideo({ src, className = '', poster, threshold = 0.2
     return () => io.disconnect();
   }, [src, threshold]);
 
-  return <video ref={ref} className={className} muted loop playsInline preload="none" poster={poster} aria-hidden="true" tabIndex={-1} />;
+  return (
+    <video
+      ref={ref}
+      className={className}
+      muted
+      loop
+      playsInline
+      preload="none"
+      poster={poster}
+      aria-hidden="true"
+      tabIndex={-1}
+      onError={(e) => {
+        // Undecodable file: hide it so the poster/art underneath stays visible.
+        e.currentTarget.style.visibility = 'hidden';
+      }}
+    />
+  );
 }

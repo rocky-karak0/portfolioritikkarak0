@@ -73,6 +73,12 @@
 .player__ring { position: absolute; inset: -14px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.4); animation: ring 2.4s var(--ease) infinite; }
 @keyframes ring { 0% { transform: scale(0.85); opacity: 0.9; } 100% { transform: scale(1.5); opacity: 0; } }
 .player__label { position: absolute; left: 20px; bottom: 16px; display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-ui); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.player__fallback { position: absolute; inset: 0; display: grid; place-items: center; background-size: cover; background-position: center; }
+.player__fallback::before { content: ''; position: absolute; inset: 0; background: rgba(3, 3, 6, 0.6); }
+.player__fallback-msg { position: relative; display: grid; justify-items: center; gap: 14px; max-width: 84%; padding: 22px 26px; border-radius: 16px; background: rgba(8, 8, 12, 0.78); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); color: #e6e6ef; font-family: var(--font-ui); font-size: 0.9rem; text-align: center; }
+.player__fallback-msg button { padding: 0.6em 1.3em; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
+.player__unlock { position: absolute; left: 50%; top: 50%; z-index: 2; display: grid; place-items: center; width: clamp(68px, 9vw, 104px); aspect-ratio: 1; padding-left: 4px; border-radius: 50%; transform: translate(-50%, -50%); background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.4); color: #fff; cursor: pointer; transition: background 0.3s, transform 0.4s var(--ease); }
+.player__unlock:hover { background: var(--accent); transform: translate(-50%, -50%) scale(1.08); }
 
 /* ---------- reel modal ---------- */
 .reel-modal { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; padding: clamp(16px, 4vw, 56px); background: rgba(3, 3, 6, 0.92); backdrop-filter: blur(14px); }

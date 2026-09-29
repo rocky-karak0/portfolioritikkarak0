@@ -7,6 +7,9 @@ dist/
 build/
 .vite/
 
+# source masters — the site only ships client/public/videos, and these exceed GitHub's 100 MB limit
+client/media/
+
 # env files (never commit secrets)
 .env
 .env.*
